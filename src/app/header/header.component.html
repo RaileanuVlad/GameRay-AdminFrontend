@@ -1,0 +1,78 @@
+<nav class="navbar navbar-dark bg-dark p-0">
+
+
+  <h1 class="navbar-brand m-0">
+    <a routerLink="/" class="nav-link">GameRay</a>
+  </h1>
+
+  <div>
+    <ul class="nav">
+
+      <li class="nav-item" routerLinkActive="active-page">
+        <a class="nav-link" routerLink="/editgame">
+          <i class="fa-solid fa-keyboard"></i>
+          Games
+        </a>
+      </li>
+
+      <li class="nav-item" routerLinkActive="active-page">
+        <a class="nav-link" routerLink="/editcategory">
+          <i class="fa-solid fa-gamepad"></i>
+          Categories
+        </a>
+      </li>
+
+      <li class="nav-item" routerLinkActive="active-page">
+        <a class="nav-link" routerLink="/editdeveloper">
+          <i class="fa-solid fa-code"></i>
+          Developers
+        </a>
+      </li>
+
+      <li class="nav-item" routerLinkActive="active-page" *ngIf="this.rank>0">
+        <a class="nav-link" routerLink="/edituser">
+          <i class="fa-solid fa-user"></i>
+          Users
+        </a>
+      </li>
+
+      <li class="nav-item" routerLinkActive="active-page" *ngIf="this.rank>1">
+        <a class="nav-link" routerLink="/editadmin">
+          <i class="fa-solid fa-user-gear"></i>
+          Admins
+        </a>
+      </li>
+
+      <li class="nav-item" routerLinkActive="active-page">
+        <a class="nav-link" routerLink="/editsale">
+          <i class="fa-solid fa-tag"></i>
+          Sales
+        </a>
+      </li>
+
+    </ul>
+  </div>
+
+  <div>
+    <ul class="nav">
+      <li style="color:transparent; user-select:none">
+          Very Big Spacer
+      </li>
+      <li class="nav-item" routerLinkActive="active-page" *ngIf="!currentAdmin">
+        <a class="nav-link" (click)="openLogin()">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          Login
+        </a>
+      </li>
+
+      <li class="nav-item" routerLinkActive="active-page" *ngIf="currentAdmin">
+        <a class="nav-link" (click)="logout()">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          Logout
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</nav>
+<app-login-modal #loginModal></app-login-modal>

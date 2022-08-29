@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Developer {\n  constructor(input) {\n    Object.assign(this, input);\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}

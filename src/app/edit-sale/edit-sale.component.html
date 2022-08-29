@@ -1,0 +1,52 @@
+<div class="text-center container-fluid">
+  <br><br>
+  <h1>Sales <a *ngIf="this.rank>2" (click)="addSale()"><i class="fa-regular fa-square-plus"></i></a></h1>
+  <br><br>
+  <div class="game d-inline-block">
+    <div class="container mb-3">
+      <div class="row">
+        <div class="col-6">
+          <input [(ngModel)]="searchSale" type="text" class="form-control w-50" placeholder="Search">
+        </div>
+        <div class="col-6">
+          <button mdbBtn block="true" class="w-auto" style="float:right" (click)="exportexcel()">
+            <i class="fa-solid fa-file-export"></i>Export
+          </button>
+        </div>
+      </div>
+    </div>
+    <table class="table" #exportSales>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Game Key</th>
+          <th>Date</th>
+          <th *ngIf="this.rank>0">Edit</th>
+          <th *ngIf="this.rank>0">Delete</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sale of sales | searchFilter: {email: searchSale, name: searchSale, price: searchSale, gameKey: searchSale, date: searchSale}; let i=index">
+          <td>{{sale.id}}</td>
+          <td>{{sale.email}}</td>
+          <td>{{sale.name}}</td>
+          <td>{{sale.price | number : '1.2-2'}}$</td>
+          <td>{{sale.gameKey}}</td>
+          <td>{{sale.date}}</td>
+          <td *ngIf="this.rank>2">
+            <a (click)="showM1(sale.id)">Edit<i class="fas fa-pen"></i></a>
+          </td>
+          <td *ngIf="this.rank>2">
+            <a (click)="deleteSale(sale.id, sale.email, sale.name)">Delete<i class="fas fa-eraser"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<app-edit-sale-modal #editSaleModal (change)="changeE($event)"></app-edit-sale-modal>
+<app-add-sale-modal #addSaleModal (change)="changeE($event)"></app-add-sale-modal>

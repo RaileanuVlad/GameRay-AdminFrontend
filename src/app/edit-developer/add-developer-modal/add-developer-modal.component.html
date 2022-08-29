@@ -1,0 +1,37 @@
+<div bsModal class="modal fade" #addDeveloperModal="bs-modal" tabindex="-1" role="dialog"
+  aria-labelledby="addDeveloperModal" aria-hidden="true" (onHide)=" this.addDeveloperForm.reset();">
+  <div id="bigDiv" class="modal-dialog" role="document" *ngIf="addDeveloperForm">
+    <div class="modal-content" style="background-color:black">
+
+      <div class="modal-header" style="background-color:black">
+        <h4 class="modal-title" id="myModalLabel">Add Developer</h4>
+        <button type="button" class="close" data-dismiss="modal" (click)="modal.hide()">
+          <i class="fa-solid fa-x"></i>
+        </button>
+      </div>
+
+
+      <div class="modal-body">
+
+
+        <form class="text-center" [formGroup]="addDeveloperForm" (ngSubmit)="addDeveloper()">
+
+
+          <label for="name">Name</label>
+          <input type="text" id="name" class="form-control mb-4" formControlName="name" autocomplete="off">
+
+          <label for="website">Website</label>
+          <input type="text" id="website" class="form-control mb-4" formControlName="website" autocomplete="off">
+
+          <label for="country">Country</label>
+          <input type="text" id="country" class="form-control mb-4" formControlName="country" autocomplete="off">
+
+          <button mdbBtn block="true" class="my-4" type="submit"
+            [disabled]="!this.addDeveloperForm.valid || this.addDeveloperForm.pristine">Add</button>
+
+
+        </form>
+
+
+      </div>
+    </div>

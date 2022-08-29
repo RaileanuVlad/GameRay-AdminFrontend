@@ -1,0 +1,27 @@
+<div bsModal class="modal fade" #editCategoryModal="bs-modal" tabindex="-1" role="dialog"
+  aria-labelledby="editCategoryModal" aria-hidden="true" (onHide)=" this.editCategoryForm.reset();">
+  <div id="bigDiv" class="modal-dialog" role="document" *ngIf="editCategoryForm">
+    <div class="modal-content" style="background-color:black">
+
+      <div class="modal-header" style="background-color:black">
+        <h4 class="modal-title" id="myModalLabel">Edit Category</h4>
+        <button type="button" class="close" data-dismiss="modal" (click)="modal.hide()">
+          <i class="fa-solid fa-x"></i>
+        </button>
+      </div>
+
+
+      <div class="modal-body">
+
+
+        <form class="text-center" [formGroup]="editCategoryForm" (ngSubmit)="editCategory()">
+
+          <label for="name">Name</label>
+          <input type="text" id="name" class="form-control mb-4" formControlName="name" autocomplete="off">
+          <button mdbBtn block="true" class="my-4" type="submit"
+            [disabled]="!this.editCategoryForm.valid || this.editCategoryForm.pristine">Edit</button>
+
+        </form>
+
+      </div>
+    </div>

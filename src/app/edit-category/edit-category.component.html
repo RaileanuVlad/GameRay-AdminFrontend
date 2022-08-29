@@ -1,0 +1,44 @@
+<div class="text-center">
+  <br><br>
+  <h1>Categories <a *ngIf="this.rank>0" (click)="addCategory()"><i class="fa-regular fa-square-plus"></i></a></h1>
+  <br><br>
+  <div class="category d-inline-block">
+    <input [(ngModel)]="searchCategory" type="text" class="form-control w-50 mb-3" placeholder="Search">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th *ngIf="this.rank>0" scope="col">Edit</th>
+          <th *ngIf="this.rank>0" scope="col">Delete</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of categories | searchFilter: {name: searchCategory}; let i=index">
+          <th scope="row">{{category.id}}</th>
+          <td>{{category.name}}</td>
+
+
+
+          <td *ngIf="this.rank>0">
+            <a (click)="showM3(category.id)">Edit<i class="fas fa-pen"></i></a>
+          </td>
+          <td *ngIf="this.rank>0">
+            <a (click)="deleteCategory(category.id, category.name)">Delete<i class="fas fa-eraser"></i></a>
+          </td>
+
+
+        </tr>
+
+
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+
+
+<app-edit-category-modal #editCategoryModal (change)="changeE($event)"></app-edit-category-modal>
+<app-add-category-modal #addCategoryModal (change)="changeE($event)"></app-add-category-modal>

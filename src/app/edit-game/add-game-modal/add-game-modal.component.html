@@ -1,0 +1,106 @@
+<div bsModal class="modal fade" #addGameModal="bs-modal" tabindex="-1" role="dialog" aria-labelledby="addGameModal"
+  aria-hidden="true" (onHide)=" this.addGameForm.reset();">
+  <div id="bigDiv" class="modal-dialog" role="document" *ngIf="addGameForm">
+    <div class="modal-content" style="background-color:black">
+
+      <div class="modal-header" style="background-color:black">
+        <h4 class="modal-title" id="myModalLabel">Add Game</h4>
+        <button type="button" class="close" data-dismiss="modal" (click)="modal.hide()">
+          <i class="fa-solid fa-x"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        <form class="text-center" [formGroup]="addGameForm" (ngSubmit)="addGame()">
+
+          <label for="name">Name</label>
+          <input type="text" id="name" class="form-control mb-4" formControlName="name" autocomplete="off">
+
+          <label for="price">Price</label>
+          <input type="number" id="price" class="form-control mb-4" formControlName="price">
+
+          <label for="description">Description</label>
+          <textarea type="text" id="description" class="form-control mb-4" formControlName="description"
+            autocomplete="off" rows="2"></textarea>
+
+          <label for="minReq">Min. Req.</label>
+          <textarea type="text" id="minReq" class="form-control mb-4" formControlName="minReq" autocomplete="off"
+            rows="2"></textarea>
+
+          <label for="recReq">Rec. Req.</label>
+          <textarea type="text" id="recReq" class="form-control mb-4" formControlName="recReq" autocomplete="off"
+            rows="2"></textarea>
+
+          <label for="platform">Platform</label>
+          <select id="platform" class="form-select mb-4" formControlName="platform" autocomplete="off">
+            <option [value]="null">Please choose a platform</option>
+            <option value="PC">PC</option>
+            <option value="Nintendo">Nintendo</option>
+            <option value="PS">PS</option>
+            <option value="Xbox">Xbox</option>
+          </select>
+
+
+          <div style="text-align:center">
+            <input type="file" #file1 placeholder="Choose file" (click)="resetProgress1()"
+              (change)="uploadFileImg(file1.files)" style="display:none">
+            <button class="btn btn-md" style="width:auto" [disabled]="progress1 > 0 && progress1 < 100" type="button"
+              (click)="file1.click()">
+              Upload Image
+            </button>
+            <span class="upload" *ngIf="progress1 > 0">
+              {{progress1}}%
+            </span>
+            <span class="upload" *ngIf="progress1 == 100">
+              Done!
+            </span>
+
+          </div>
+          <input type="text" id="imgLink" class="form-control mb-4" formControlName="imgLink" autocomplete="off"
+            readonly>
+
+          <div style="text-align:center">
+            <input type="file" #file2 placeholder="Choose file" (click)="resetProgress2()"
+              (change)="uploadFileBan(file2.files)" style="display:none">
+            <button class="btn btn-md" style="width:auto" [disabled]="progress2 > 0 && progress2 < 100" type="button"
+              (click)="file2.click()">
+              Upload Banner
+            </button>
+            <span class="upload" *ngIf="progress2 > 0">
+              {{progress2}}%
+            </span>
+            <span class="upload" *ngIf="progress2 == 100">
+              Done!
+            </span>
+
+          </div>
+          <input type="text" id="banLink" class="form-control mb-4" formControlName="banLink" autocomplete="off"
+            readonly>
+
+          <label for="sale">Sale</label>
+          <input type="number" id="sale" class="form-control mb-4" formControlName="sale" autocomplete="off">
+
+          <label for="developerId">Developer</label>
+          <select id="developerId" class="form-select mb-4" formControlName="developerId" autocomplete="off">
+            <option [value]="null">Please choose a developer</option>
+            <option *ngFor="let developer of developers" [ngValue]="developer.id">
+              {{developer.name}}
+            </option>
+          </select>
+
+          <div class="form-check form-check-inline" *ngFor="let category of categories">
+            <input class="form-check-input" type="checkbox" [id]="category.id"
+              (change)="onChange(category.id, $event.target.checked)">
+            <label class="form-check-label" [for]="category.id">{{category.name}}</label>
+          </div>
+
+          <button mdbBtn block="true" class="my-4" type="submit"
+            [disabled]="!this.addGameForm.valid || this.addGameForm.pristine">Add</button>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

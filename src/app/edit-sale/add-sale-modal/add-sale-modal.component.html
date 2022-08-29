@@ -1,0 +1,50 @@
+<div bsModal class="modal fade" #addSaleModal="bs-modal" tabindex="-1" role="dialog" aria-labelledby="addSaleModal"
+  aria-hidden="true" (onHide)=" this.addSaleForm.reset();">
+  <div id="bigDiv" class="modal-dialog" role="document" *ngIf="addSaleForm">
+    <div class="modal-content" style="background-color:black">
+
+      <div class="modal-header" style="background-color:black">
+        <h4 class="modal-title" id="myModalLabel">Add Sale</h4>
+        <button type="button" class="close" data-dismiss="modal" (click)="modal.hide()">
+          <i class="fa-solid fa-x"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        <form class="text-center" [formGroup]="addSaleForm" (ngSubmit)="addSale()">
+
+          <label for="email">Email</label>
+          <input type="text" id="email" class="form-control mb-4" formControlName="email" autocomplete="off">
+
+          <label for="name">Name</label>
+          <input type="text" id="name" class="form-control mb-4" formControlName="name" autocomplete="off">
+
+          <label for="price">Price</label>
+          <input type="number" id="price" class="form-control mb-4" formControlName="price">
+
+          <label for="gameKey">Game Key</label>
+          <input type="text" id="gameKey" class="form-control mb-4" formControlName="gameKey" autocomplete="off">
+
+          <label for="date">Date</label>
+          <input type="text" id="date" class="form-control mb-4" formControlName="date" autocomplete="off">
+
+          <label for="userId">User Id</label>
+          <input type="number" id="userId" class="form-control mb-4" formControlName="userId" autocomplete="off">
+
+          <label for="gameId">Game Id</label>
+          <input type="number" id="gameId" class="form-control mb-4" formControlName="gameId" autocomplete="off">
+
+          <button mdbBtn block="true" class="my-4" type="submit"
+            [disabled]="!this.addSaleForm.valid || this.addSaleForm.pristine">Add</button>
+
+          <div class="mb-4" style="text-align:center">
+            <span *ngIf="addSaleInvalid" style="color:red;font-size:16px">User ID or Game ID does not exist.</span>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="text-center">
+  <br><br>
+  <h1>Developers <a *ngIf="this.rank>0" (click)="addDeveloper()"><i class="fa-regular fa-square-plus"></i></a></h1>
+  <br><br>
+  <div class="developer d-inline-block">
+    <input [(ngModel)]="searchDeveloper" type="text" class="form-control w-50 mb-3" placeholder="Search">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Website</th>
+          <th scope="col">Country</th>
+          <th *ngIf="this.rank>0" scope="col">Edit</th>
+          <th *ngIf="this.rank>0" scope="col">Delete</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let developer of developers | searchFilter: {name: searchDeveloper, website: searchDeveloper, country: searchDeveloper}; let i=index">
+          <th scope="row">{{developer.id}}</th>
+          <td>{{developer.name}}</td>
+          <td>{{developer.website}}</td>
+          <td>{{developer.country}}</td>
+
+          <td *ngIf="this.rank>0">
+            <a (click)="showM4(developer.id)">Edit<i class="fas fa-pen"></i></a>
+          </td>
+          <td *ngIf="this.rank>0">
+            <a (click)="deleteDeveloper(developer.id, developer.name)">Delete<i class="fas fa-eraser"></i></a>
+          </td>
+
+
+        </tr>
+
+
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+
+<app-edit-developer-modal #editDeveloperModal (change)="changeE($event)"></app-edit-developer-modal>
+<app-add-developer-modal #addDeveloperModal (change)="changeE($event)"></app-add-developer-modal>

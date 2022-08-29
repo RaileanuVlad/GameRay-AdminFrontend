@@ -1,0 +1,27 @@
+<div bsModal class="modal fade" #addCategoryModal="bs-modal" tabindex="-1" role="dialog"
+  aria-labelledby="addCategoryModal" aria-hidden="true" (onHide)=" this.addCategoryForm.reset();">
+  <div id="bigDiv" class="modal-dialog" role="document" *ngIf="addCategoryForm">
+    <div class="modal-content" style="background-color:black">
+
+      <div class="modal-header" style="background-color:black">
+        <h4 class="modal-title" id="myModalLabel">Add Category</h4>
+        <button type="button" class="close" data-dismiss="modal" (click)="modal.hide()">
+          <i class="fa-solid fa-x"></i>
+        </button>
+      </div>
+
+
+      <div class="modal-body">
+
+
+        <form class="text-center" [formGroup]="addCategoryForm" (ngSubmit)="addCategory()">
+
+          <label for="name">Name</label>
+          <input type="text" id="name" class="form-control mb-4" formControlName="name" autocomplete="off">
+          <button mdbBtn block="true" class="my-4" type="submit"
+            [disabled]="!this.addCategoryForm.valid || this.addCategoryForm.pristine">Add</button>
+
+        </form>
+
+      </div>
+    </div>

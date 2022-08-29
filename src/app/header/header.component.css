@@ -1,0 +1,61 @@
+.navbar {
+  border-bottom: 3px solid rgb(80, 185, 255);
+  border-radius: 10px;
+  box-shadow: 0 0 50px rgb(80, 185, 255);
+}
+
+ul {
+  border: none !important;
+  font-size: 18px;
+  font-weight:bold;
+}
+
+nav a{
+  margin-left:5px;
+  margin-right:5px;
+}
+
+nav a {
+  color: rgb(80, 185, 255);
+  transition: background 0.5s ease-in-out;
+  border-radius: 100px;
+}
+
+.nav-item a:hover {
+  background: white;
+  color: rgb(80, 185, 255);
+  transition: background 0.5s ease-in-out;
+  border-radius: 100px;
+}
+
+
+.active-page {
+  background: white;
+  border-radius: 100px;
+}
+
+i {
+  color: rgb(80, 185, 255);
+  font-size: 20px;
+}
+
+h1 {
+  color: rgb(80, 185, 255);
+  font-family: "Shadows Into Light";
+  font-size: 4rem !important;
+  border: none;
+  margin: none;
+  padding: none;
+}
+
+h1 a{
+  color: rgb(80, 185, 255);
+  transition:color 0.5s ease;
+}
+
+h1:hover a{
+  color:white;
+  transition:color 0.5s ease;
+}
+
+

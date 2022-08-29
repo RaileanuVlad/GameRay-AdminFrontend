@@ -1,0 +1,39 @@
+<div class="text-center">
+  <br><br>
+  <h1>Users <a *ngIf="this.rank>1" (click)="addUser()"><i class="fa-regular fa-square-plus"></i></a></h1>
+  <br><br>
+  <div class="user d-inline-block">
+    <input [(ngModel)]="searchUser" type="text" class="form-control w-50 mb-3" placeholder="Search">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Email</th>
+          <th scope="col">Rank</th>
+          <th *ngIf="this.rank>1" scope="col">Edit</th>
+          <th *ngIf="this.rank>1" scope="col">Delete</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users | searchFilter: {email: searchUser, state: searchUser};let i=index">
+          <th scope="row">{{user.id}}</th>
+          <td>{{user.email}}</td>
+          <td>{{user.state}}</td>
+
+          <td *ngIf="this.rank>1">
+            <a (click)="showM3(user.id)">Edit<i class="fas fa-pen"></i></a>
+          </td>
+          <td *ngIf="this.rank>1">
+            <a (click)="deleteUser(user.id, user.email)">Delete<i class="fas fa-eraser"></i></a>
+          </td>
+
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<app-edit-user-modal #editUserModal (change)="changeE($event)"></app-edit-user-modal>
+<app-add-user-modal #addUserModal (change)="changeE($event)"></app-add-user-modal>

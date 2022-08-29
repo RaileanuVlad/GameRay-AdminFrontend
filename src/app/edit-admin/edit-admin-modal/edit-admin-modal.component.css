@@ -1,0 +1,37 @@
+* {
+  color: rgb(80, 185, 255);
+}
+
+.login-form {
+  width: 340px;
+  margin: 50px auto;
+  font-size: 15px;
+}
+
+.login-form form {
+  margin-bottom: 15px;
+}
+
+.form-control,
+.btn {
+  min-height: 38px;
+  border-radius: 2px;
+}
+
+.btn {
+  font-size: 15px;
+  font-weight: bold;
+  background-color: rgb(80, 185, 255);
+  color:black;
+  border: none;
+}
+
+#bigDiv {
+  border: 3px solid rgb(80, 185, 255);
+  border-radius: 10px;
+  box-shadow: 0 0 50px rgb(80, 185, 255);
+}
+
+.modal-header {
+  border-bottom-color:rgb(80, 185, 255);
+}

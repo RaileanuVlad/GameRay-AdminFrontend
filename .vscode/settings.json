@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/25e809ae-fbdb-4ed4-bc41-e30ecc41c84f/microsoft.web/sites/subscriptions/25e809ae-fbdb-4ed4-bc41-e30ecc41c84f/resourceGroups/GameRay/providers/Microsoft.Web/sites/gameray",
+    "appService.deploySubpath": "dist\\frontend"
+}

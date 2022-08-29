@@ -1,0 +1,60 @@
+<div bsModal class="modal fade" #editUserModal="bs-modal" tabindex="-1" role="dialog" aria-labelledby="editUserModal"
+  aria-hidden="true" (onHide)=" this.editUserForm.reset();">
+
+  <div id="bigDiv" class="modal-dialog" role="document" *ngIf="editUserForm">
+    <div class="modal-content" style="background-color:black">
+
+      <div class="modal-header" style="background-color:black">
+        <h4 class="modal-title" id="myModalLabel">Edit User</h4>
+        <button type="button" class="close" data-dismiss="modal" (click)="modal.hide()">
+          <i class="fa-solid fa-x"></i>
+        </button>
+      </div>
+
+
+      <div class="modal-body">
+
+
+        <form class="text-center" [formGroup]="editUserForm" (ngSubmit)="editUser()">
+
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input style="margin-bottom:0px !important" type="email" id="email" class="form-control mb-4"
+              formControlName="email" autocomplete="off">
+            <div style="margin-bottom: 15px; margin-top:none; font-size:12px; text-align:center">
+              <span style="color:red"
+                *ngIf="this.editUserForm.controls.email.errors?.email">Not a valid email</span>
+            </div>
+          </div>
+
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-control mb-4" formControlName="password" autocomplete="off">
+
+          <label for="rpassword">Re-type password</label>
+          <input style="margin-bottom:0px !important" type="password" id="rpassword" class="form-control mb-4"
+            formControlName="rpassword" autocomplete="off">
+          <div style="margin-bottom: 15px; margin-top:none; text-align:center;">
+            <span style="color:red; font-size:16px"
+              *ngIf="this.editUserForm.controls.rpassword.value !== this.editUserForm.controls.password.value">Passwords
+              do not match</span>
+          </div>
+
+          <label for="state">Rank</label>
+          <select id="state" class="form-select mb-4" formControlName="state" autocomplete="off">
+            <option value="0">0</option>
+            <option value="1">1</option>
+          </select>
+
+          <button mdbBtn block="true" class="my-4" type="submit"
+            [disabled]="!this.editUserForm.valid || this.editUserForm.pristine">Edit</button>
+
+          <div class="mb-4" style="text-align:center">
+            <span *ngIf="editInvalid" style="color:red;font-size:16px">{{editMessage}}</span>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

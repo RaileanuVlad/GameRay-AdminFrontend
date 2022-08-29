@@ -1,0 +1,65 @@
+<div class="text-center container-fluid">
+  <br><br>
+  <h1>Games <a *ngIf="this.rank>0" (click)="addGame()"><i class="fa-regular fa-square-plus"></i></a></h1>
+  <br><br>
+  <div class="game d-inline-block">
+    <div class="container mb-3">
+      <div class="row">
+        <div class="col-6">
+          <input [(ngModel)]="searchGame" type="text" class="form-control w-50" placeholder="Search">
+        </div>
+        <div class="col-6">
+          <button mdbBtn block="true" class="w-auto" style="float:right" (click)="exportexcel()">
+            <i class="fa-solid fa-file-export"></i>Export
+          </button>
+        </div>
+      </div>
+    </div>
+    <table class="table" #exportGames>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>Min. Req.</th>
+          <th>Rec. Req.</th>
+          <th>Platform</th>
+          <th>Views</th>
+          <th>Sale</th>
+          <th>Sold</th>
+          <th>Developer</th>
+          <th>Categories</th>
+          <th *ngIf="this.rank>0">Edit</th>
+          <th *ngIf="this.rank>0">Delete</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let game of games | searchFilter: {name: searchGame, price: searchGame, description: searchGame, minReq: searchGame, 
+                    recReq: searchGame, platform: searchGame, views: searchGame, sale: searchGame, developerName: searchGame, categoryName: searchGame, copiesSold: searchGame}; let i=index">
+          <td>{{game.id}}</td>
+          <td>{{game.name}}</td>
+          <td>{{game.price}}$</td>
+          <td id="thisOverflow">{{game.description}}</td>
+          <td id="thisOverflow">{{game.minReq}}</td>
+          <td id="thisOverflow">{{game.recReq}}</td>
+          <td>{{game.platform}}</td>
+          <td>{{game.views}}</td>
+          <td>{{game.sale}}%</td>
+          <td>{{game.copiesSold}}</td>
+          <td id="thisOverflow">{{game.developerName}}</td>
+          <td id="thisOverflow">{{game.categoryName.join(", ")}}</td>
+          <td *ngIf="this.rank>0">
+            <a (click)="showM1(game.id)">Edit<i class="fas fa-pen"></i></a>
+          </td>
+          <td *ngIf="this.rank>0">
+            <a (click)="deleteGame(game.id, game.name)">Delete<i class="fas fa-eraser"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<app-edit-game-modal #editGameModal (change)="changeE($event)"></app-edit-game-modal>
+<app-add-game-modal #addGameModal (change)="changeE($event)"></app-add-game-modal>

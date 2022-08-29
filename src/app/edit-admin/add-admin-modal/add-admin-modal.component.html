@@ -1,0 +1,73 @@
+<div bsModal class="modal fade" #addAdminModal="bs-modal" tabindex="-1" role="dialog" aria-labelledby="addAdminModal"
+  aria-hidden="true" (onHide)=" this.addAdminForm.reset();">
+
+  <div id="bigDiv" class="modal-dialog" role="document" *ngIf="addAdminForm">
+    <div class="modal-content" style="background-color:black">
+
+      <div class="modal-header" style="background-color:black">
+        <h4 class="modal-title" id="myModalLabel">Add Admin</h4>
+        <button type="button" class="close" data-dismiss="modal" (click)="modal.hide()">
+          <i class="fa-solid fa-x"></i>
+        </button>
+      </div>
+
+
+      <div class="modal-body">
+
+
+        <form class="text-center" [formGroup]="addAdminForm" (ngSubmit)="addAdmin()">
+
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input style="margin-bottom:0px !important" type="email" id="email" class="form-control mb-4"
+              formControlName="email" autocomplete="off">
+            <div style="margin-bottom: 15px; margin-top:none; font-size:12px; text-align:center">
+              <span style="color:red"
+                *ngIf="this.addAdminForm.controls.email.errors?.email">Not a valid email</span>
+            </div>
+          </div>
+
+          <label for="password">Password</label>
+          <input type="password" id="password" class="form-control mb-4" formControlName="password" autocomplete="off">
+
+          <label for="rpassword">Re-type password</label>
+          <input style="margin-bottom:0px !important" type="password" id="rpassword" class="form-control mb-4"
+            formControlName="rpassword" autocomplete="off">
+          <div style="margin-bottom: 15px; margin-top:none; text-align:center">
+            <span style="color:red; font-size:16px"
+              *ngIf="this.addAdminForm.controls.rpassword.value !== this.addAdminForm.controls.password.value">Passwords
+              do not match</span>
+          </div>
+
+          <label for="first">First</label>
+          <input type="text" id="first" class="form-control mb-4" formControlName="first" autocomplete="off">
+
+          <label for="last">Last</label>
+          <input type="text" id="last" class="form-control mb-4" formControlName="last" autocomplete="off">
+
+          <label for="birth">Birth</label>
+          <input type="text" id="birth" class="form-control mb-4" formControlName="birth" autocomplete="off">
+
+          <label for="phone">Phone</label>
+          <input type="text" id="phone" class="form-control mb-4" formControlName="phone" autocomplete="off">
+
+          <label for="state">Rank</label>
+          <select id="state" class="form-select mb-4" formControlName="state" autocomplete="off">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+
+          <button mdbBtn block="true" class="my-4" type="submit"
+            [disabled]="!this.addAdminForm.valid || this.addAdminForm.pristine">Add</button>
+
+          <div class="mb-4" style="text-align:center">
+            <span *ngIf="registerInvalid" style="color:red;font-size:16px">{{registerMessage}}</span>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>

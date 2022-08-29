@@ -1,0 +1,63 @@
+.table {
+  width: auto;
+  max-width: 90vw;
+}
+
+h1 {
+  font-weight: 500;
+  text-align: center;
+}
+
+* {
+  color: rgb(80, 185, 255);
+}
+
+button {
+  background-color: rgb(80, 185, 255);
+  color: black;
+}
+
+button:hover {
+  background-color: rgb(80, 185, 255);
+  color: black;
+}
+
+button:focus {
+  background-color: rgb(80, 185, 255);
+  color: black;
+}
+
+button i {
+  color: black;
+}
+
+#thisOverflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+@media (max-width: 1749px) {
+  #thisOverflow {
+    max-width: 100px;
+  }
+}
+
+@media (min-width: 1750px) and (max-width: 1999px) {
+  #thisOverflow {
+    max-width: 150px;
+  }
+}
+
+@media (min-width: 2000px) {
+  #thisOverflow {
+    max-width: 200px;
+  }
+}
+
+#thisOverflow:hover {
+  overflow: visible;
+  white-space: normal;
+  height: auto;
+}
